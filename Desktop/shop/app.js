@@ -5,7 +5,9 @@ const products = [
   { id: 4, title: 'Мышь беспроводная', category: 'Аксессуары', price: 2500 },
   { id: 5, title: 'Honor 99 Pro', category: 'Телефоны', price: 300000 },
   { id: 6, title: 'Электрическая расческа', category: 'Аксессуары', price: 200 },
-  { id: 7, title: 'Микрофон про', category: 'Аксессуары', price: 10000}
+  { id: 7, title: 'Микрофон про', category: 'Аксессуары', price: 10000},
+  { id: 8, title: 'Ложка электрическая', category: 'Аксессуары', price: 10}
+
 ];
 
 const catalog = document.getElementById('catalog');
