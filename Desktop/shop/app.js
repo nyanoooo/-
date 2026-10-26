@@ -7,6 +7,7 @@ const products = [
   { id: 6, title: 'Электрическая расческа', category: 'Аксессуары', price: 200 },
   { id: 7, title: 'Микрофон про', category: 'Аксессуары', price: 10000},
   { id: 8, title: 'Ложка электрическая', category: 'Аксессуары', price: 10}
+  { id: 9, title: 'Honor Ракета Turbo Pro', category: 'Телефоны', price: 20000}
 
 ];
 
