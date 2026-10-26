@@ -1,17 +1,19 @@
+
 const products = [
-  { id: 1, title: 'Ноутбук 15"',       category: 'Компьютеры', price: 85000 },
-  { id: 2, title: 'Монитор 27"',       category: 'Компьютеры', price: 28000 },
-  { id: 3, title: 'Клавиатура',        category: 'Аксессуары', price: 6500 },
+  { id: 1, title: 'Ноутбук 15"', category: 'Компьютеры', price: 85000 },
+  { id: 2, title: 'Монитор 27"', category: 'Компьютеры', price: 28000 },
+  { id: 3, title: 'Клавиатура', category: 'Аксессуары', price: 6500 },
   { id: 4, title: 'Мышь беспроводная', category: 'Аксессуары', price: 2500 },
   { id: 5, title: 'Honor 99 Pro', category: 'Телефоны', price: 300000 },
-  { id: 6, title: 'Электрическая расческа', category: 'Аксессуары', price: 200 },
-  { id: 7, title: 'Микрофон про', category: 'Аксессуары', price: 10000},
-  { id: 8, title: 'Ложка электрическая', category: 'Аксессуары', price: 10}
-  { id: 9, title: 'Honor Ракета Turbo Pro', category: 'Телефоны', price: 20000}
-
+  { id: 6, title: 'Телефон Ракета Турбо Плюс', category: 'Телефоны', price: 600 }
 ];
 
+const cart = [];
+
 const catalog = document.getElementById('catalog');
+const cartCount = document.getElementById('cart-count');
+const cartSum = document.getElementById('cart-sum');
+const clearCart = document.getElementById('clear-cart');
 
 function renderProducts() {
   catalog.innerHTML = products.map(p => `
@@ -24,12 +26,31 @@ function renderProducts() {
   `).join('');
 }
 
-renderProducts();
-catalog.addEventListener('click', function(event) {
-  if (event.target.tagName === 'BUTTON') {
-    const id = Number(event.target.dataset.id);
-    const product = products.find(p => p.id === id);
+function renderCart() {
+  cartCount.textContent = cart.length;
 
-    console.log(product.title);
+  cartSum.textContent = cart
+    .reduce((sum, p) => sum + p.price, 0)
+    .toLocaleString('ru-RU');
+}
+
+catalog.addEventListener('click', e => {
+  if (e.target.tagName !== 'BUTTON') return;
+
+  const product = products.find(
+    p => p.id === Number(e.target.dataset.id)
+  );
+
+  if (product) {
+    cart.push(product);
+    renderCart();
   }
 });
+
+clearCart.addEventListener('click', () => {
+  cart.length = 0;
+  renderCart();
+});
+
+renderProducts();
+renderCart();
